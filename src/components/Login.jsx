@@ -26,6 +26,8 @@ function Login() {
     }
     try {
       await account.createEmailSession(email, password)
+      setEmail('')
+      setPassword('')
       navigate("/profile")
     } catch (error) {
       // console.log(error);
