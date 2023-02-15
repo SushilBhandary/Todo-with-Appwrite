@@ -7,7 +7,6 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
 function AddTodo( {addTodo}) {
-    const [todo, setTodo] = useState("")
     const [titel, setTitle] = useState("")
     const [task, setTask] = useState("")
     const [tasks, setTasks] = useState([])

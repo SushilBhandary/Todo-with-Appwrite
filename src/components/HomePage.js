@@ -4,11 +4,11 @@ import {useNavigate, Link} from 'react-router-dom'
 import Avatar from "../Image/avatar.jpg"
 import AddTodo from './AddTodo'
 import TodosList from './TodosList'
+import {databases} from '../appwrite/appwriteConfig'
 
 
 function HomePage() {
     const navigate = useNavigate()
-
     const [userDetails, setUserDetails] = useState()
     const [data, setData] = useState([])
 

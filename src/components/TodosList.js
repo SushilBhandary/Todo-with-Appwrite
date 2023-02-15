@@ -4,23 +4,24 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import UpdateTodo from './UpdateTodo'
 
 function TodosList({todoData,setData}) {
-    const [todos, setTodos] = useState()
-    const [loader, setLoader] = useState(false)
+    const [editOpen, setEditOpen] = useState(false);
+    const [passIndex, setPassIndex] = useState()
+    const [id, setId] =useState()
+    const [filter, setFilter] = useState('Older')
 
     useEffect(() => {
-        setLoader(true)
         const getTodos = databases.listDocuments("62cb05f77a7c1fea3139")
         getTodos.then(
             function(response){
-                setTodos(response.documents)
+                setData(response.documents)
             },
             function(error){
                 console.log(error);
             }
         )
-        setLoader(false)
     }, []);
 
     const changeByFilter = (e) => {
@@ -74,7 +75,7 @@ function TodosList({todoData,setData}) {
                 progress: undefined,
                 theme: "colored",
             });
-            setData(todoData.filter( todo => todo.$id != id))
+            setData(todoData.filter( todo => todo.$id !== id))
         },
         function(error){
             console.log(error);
